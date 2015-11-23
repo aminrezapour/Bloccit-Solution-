@@ -13,6 +13,7 @@ end
 # #2
 group :development do
  gem 'sqlite3'
+ gem 'pry-rails'
 end
 
 # Note that this gem is going to be available for bothe development & test env.
