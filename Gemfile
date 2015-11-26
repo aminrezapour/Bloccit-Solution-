@@ -18,6 +18,7 @@ end
 # Note that this gem is going to be available for bothe development & test env.
 group :development, :test do
    gem 'rspec-rails', '~> 3.0'
+   gem 'shoulda'
 end
 
 # Use SCSS for stylesheets
