@@ -6,6 +6,18 @@
 <div class="row">
   <div class="col-md-8">
     <p class="lead"><%= @topic.description %></p>
+    <% @topic.sponsored_posts.each do |sp| %>
+      <div class="media">
+        <div class="media-body">
+          <h2 class="media-heading" id="ghermez">
+            <%= link_to sp.title, topic_sponsored_post_path(@topic, sp) %>
+          </h2>
+
+        </div>
+
+      </div>
+    <% end %>
+
     <% @topic.posts.each do |p| %>
       <div class="media">
         <div class="media-body">
@@ -26,6 +38,7 @@
   </div>
   <div class="col-md-4">
     <%= link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success' %>
+    <%= link_to "New Sponsored Post", new_topic_sponsored_post_path(@topic), class: 'btn btn-success' %>
   </div>
 
 </div>
