@@ -33,3 +33,5 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Add Bootstrap here
 gem 'bootstrap-sass'
+# Used for encypting User passwords. It needs password_digest is User model
+gem 'bcrypt'
