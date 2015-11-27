@@ -34,6 +34,15 @@ RSpec.describe User, type: :model do
 
   end
 
+  # Alternative TDD for this assignment
+  describe "capitalize user name" do
+    let(:user_with_lower_case) { User.create!(name: "amin rezapour", email: "aminrezapour@bloccit.com", password: "strawberry") }
+
+    it "should be Amin Rezapour" do
+      expect(user_with_lower_case.name).to eq("Amin Rezapour")
+    end
+  end
+
   describe "invalid user" do
     let(:user_with_invalid_name) { User.new(name: "", email: "user@bloc.io") }
     let(:user_with_invalid_email) { User.new(name: "Bloccit User", email: "") }
