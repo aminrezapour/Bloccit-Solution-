@@ -19,6 +19,8 @@ class TopicsController < ApplicationController
     @topic = Topic.new(topic_params)
 
     if @topic.save
+      # Label.update_labels is a class method (not an instance method), since it affects all the instances of Label class once
+      @topic.labels = Label.update_labels(params[:topic][:labels])
       redirect_to @topic, notice: "Topic was saved successfully"
     else
       flash[:error] = "Error creating topic. PLease try again later."
@@ -35,6 +37,7 @@ class TopicsController < ApplicationController
      @topic.assign_attributes(topic_params)
 
      if @topic.save
+       @topic.labels = Label.update_labels(params[:topic][:labels])
        flash[:notice] = "Topic was updated."
        redirect_to @topic
      else
