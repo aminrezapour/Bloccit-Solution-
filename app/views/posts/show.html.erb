@@ -1,10 +1,18 @@
-<h1>
-  <%= @post.title %>
-  <br>
-  <small>
-    submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
-  </small>
-</h1>
+<div>
+  <!-- Because the partial has access to the @post variable, we don't technically
+  need to pass it here. Other views where we would like to incorporate this partial
+  might not have an identical @post variable, however, so it's a good idea to pass
+  post in explicitly, rather than implicitly expect @post. This is why the partial
+  we created references post instead of @post. -->
+  <%= render partial: 'votes/voter', locals: {post: @post} %>
+  <h1>
+    <%= @post.title %>
+    <br>
+    <small>
+      submitted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.name %>
+    </small>
+  </h1>
+</div>
 
 <div class="row">
   <div class="col-md-8">
@@ -32,6 +40,17 @@
       <!-- Note the default method is post, and here it's overridden by delete -->
       <%= link_to "Delete", [@post.topic, @post], method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this post?'} %>
     <% end %>
+
+      <h3>
+        <%= pluralize(@post.points, 'point') %>
+        <div>
+          <small>
+            <%= pluralize(@post.up_votes, 'up vote') %>
+            <%= pluralize(@post.down_votes, 'down vote') %>
+          </small>
+        </div>
+      </h3>
+
   </div>
 
 </div>
