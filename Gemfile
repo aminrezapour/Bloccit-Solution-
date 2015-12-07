@@ -35,3 +35,5 @@ gem 'turbolinks'
 gem 'bootstrap-sass'
 # Used for encypting User passwords. It needs password_digest is User model
 gem 'bcrypt'
+# Figaro to store environment variables
+gem 'figaro', '1.0'
