@@ -27,8 +27,16 @@
 </div>
 
 <!-- amazing use of partial -->
-<h2>Posts</h2>
-<%= render @user.posts %>
+<% if @user.post_comment_total > 0 %>
+    <h2>Posts</h2>
+    <%= render @user.posts %>
 
-<h2>Comments</h2>
-<%= render @user.comments %>
+    <h2>Comments</h2>
+    <%= render @user.comments %>
+
+    <!-- # this is not working -->
+    <!-- # <h2>Favorites</h2> -->
+    <!-- # <%= render @user.favorites %> -->
+<% else %>
+    <%="#{@user.name} has not submitted any posts yet."%>
+<% end %>
