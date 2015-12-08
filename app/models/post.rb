@@ -9,6 +9,13 @@ class Post < ActiveRecord::Base
 
   default_scope { order('rank DESC')}
 
+  # This -> is a lambda:
+  # sqsum(x,y) = x*x + y*y  #<-- normal function
+  # (x,y) -> x*x + y*y #<-- anonymous function
+  # Ternary in Ruby:
+  # if_this_is_a_true_value ? then_the_result_is_this : else_it_is_this
+  scope :visible_to, -> (user) {user ? all : joins(:topic).where('topic.public' => true)}
+
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true
   validates :topic, presence: true
