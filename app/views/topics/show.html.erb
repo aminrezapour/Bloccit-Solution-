@@ -9,8 +9,8 @@
     <% @topic.sponsored_posts.each do |sp| %>
       <div class="media">
         <div class="media-body">
-          <h2 class="media-heading" id="ghermez">
-            <%= link_to sp.title, topic_sponsored_post_path(@topic, sp) %>
+          <h2 class="media-heading">
+            <%= link_to sp.title, topic_sponsored_post_path(@topic, sp), id: "ghermez" %>
           </h2>
 
         </div>
