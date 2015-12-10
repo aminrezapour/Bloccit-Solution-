@@ -22,4 +22,11 @@ Rails.application.routes.draw do
   # Note the alternative synthax root({to: 'welcome#index'})
   root to: 'welcome#index'
 
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:index, :show]
+      resources :topics, only: [:index, :show]
+    end
+  end
+
 end
